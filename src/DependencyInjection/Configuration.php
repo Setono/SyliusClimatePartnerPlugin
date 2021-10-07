@@ -4,6 +4,12 @@ declare(strict_types=1);
 
 namespace Setono\SyliusClimatePartnerPlugin\DependencyInjection;
 
+use Setono\SyliusClimatePartnerPlugin\Form\Type\ChannelClimateFeeType;
+use Setono\SyliusClimatePartnerPlugin\Model\ChannelClimateFee;
+use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
+use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
+use Sylius\Component\Resource\Factory\Factory;
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -20,12 +26,46 @@ final class Configuration implements ConfigurationInterface
          */
         $rootNode
             ->children()
-                ->scalarNode('option')
-                    ->info('This is an example configuration option')
-                    ->isRequired()
-                    ->cannotBeEmpty()
+                ->scalarNode('driver')
+                    ->defaultValue(SyliusResourceBundle::DRIVER_DOCTRINE_ORM)
         ;
 
+        $this->addResourcesSection($rootNode);
+
         return $treeBuilder;
+    }
+
+    private function addResourcesSection(ArrayNodeDefinition $node): void
+    {
+        /**
+         * @psalm-suppress MixedMethodCall
+         * @psalm-suppress PossiblyUndefinedMethod
+         * @psalm-suppress PossiblyNullReference
+         */
+        $node
+            ->children()
+                ->arrayNode('resources')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->arrayNode('channel_climate_fee')
+                            ->addDefaultsIfNotSet()
+                            ->children()
+                                ->variableNode('options')->end()
+                                ->arrayNode('classes')
+                                    ->addDefaultsIfNotSet()
+                                    ->children()
+                                        ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('factory')->defaultValue(Factory::class)->end()
+                                        ->scalarNode('form')->defaultValue(ChannelClimateFeeType::class)->end()
+                                        ->scalarNode('model')->defaultValue(ChannelClimateFee::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('repository')->cannotBeEmpty()->end()
+                                    ->end()
+                                ->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
     }
 }

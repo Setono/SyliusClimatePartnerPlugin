@@ -7,6 +7,11 @@ namespace Tests\Setono\SyliusClimatePartnerPlugin\DependencyInjection;
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
 use PHPUnit\Framework\TestCase;
 use Setono\SyliusClimatePartnerPlugin\DependencyInjection\Configuration;
+use Setono\SyliusClimatePartnerPlugin\Form\Type\ChannelClimateFeeType;
+use Setono\SyliusClimatePartnerPlugin\Model\ChannelClimateFee;
+use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
+use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
+use Sylius\Component\Resource\Factory\Factory;
 
 /**
  * See examples of tests and configuration options here: https://github.com/SymfonyTest/SymfonyConfigTest
@@ -23,27 +28,20 @@ final class ConfigurationTest extends TestCase
     /**
      * @test
      */
-    public function values_are_invalid_if_required_value_is_not_provided(): void
-    {
-        $this->assertConfigurationIsInvalid(
-            [
-                [], // no values at all
-            ],
-            '/The child (config|node) "option" (under|at path) "setono_sylius_climate_partner" must be configured/',
-            true
-        );
-    }
-
-    /**
-     * @test
-     */
     public function processed_value_contains_required_value(): void
     {
-        $this->assertProcessedConfigurationEquals([
-            ['option' => 'first value'],
-            ['option' => 'last value'],
-        ], [
-            'option' => 'last value',
+        $this->assertProcessedConfigurationEquals([], [
+            'driver' => SyliusResourceBundle::DRIVER_DOCTRINE_ORM,
+            'resources' => [
+                'channel_climate_fee' => [
+                    'classes' => [
+                        'controller' => ResourceController::class,
+                        'factory' => Factory::class,
+                        'form' => ChannelClimateFeeType::class,
+                        'model' => ChannelClimateFee::class,
+                    ],
+                ],
+            ],
         ]);
     }
 }
