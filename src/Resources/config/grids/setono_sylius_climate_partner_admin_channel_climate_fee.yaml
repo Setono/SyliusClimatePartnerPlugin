@@ -1,0 +1,30 @@
+sylius_grid:
+    grids:
+        setono_sylius_climate_partner_admin_channel_climate_fee:
+            driver:
+                options:
+                    class: "%setono_sylius_climate_partner.model.channel_climate_fee.class%"
+            limits: [100, 250, 500, 1000]
+            fields:
+                channel:
+                    type: twig
+                    label: sylius.ui.channel
+                    sortable: channel.code
+                    options:
+                        template: "@SyliusAdmin/Order/Grid/Field/channel.html.twig"
+                fee:
+                    type: twig
+                    label: setono_sylius_climate_partner.ui.fee
+                    sortable: fee
+                    path: .
+                    options:
+                        template: "@SetonoSyliusClimatePartnerPlugin/grid/field/fee.html.twig"
+            actions:
+                main:
+                    create:
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete

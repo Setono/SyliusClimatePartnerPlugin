@@ -1,0 +1,2 @@
+imports:
+    - { resource: "@SetonoSyliusClimatePartnerPlugin/Resources/config/grids/setono_sylius_climate_partner_admin_channel_climate_fee.yaml" }

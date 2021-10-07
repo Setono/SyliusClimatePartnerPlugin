@@ -1,1 +1,15 @@
-# TODO Add your admin routes here
+setono_sylius_climate_partner_admin_channel_climate_fee:
+    resource: |
+        section: admin
+        alias: setono_sylius_climate_partner.channel_climate_fee
+        templates: "@SyliusAdmin\\Crud"
+        redirect: index
+        permission: true
+        grid: setono_sylius_climate_partner_admin_channel_climate_fee
+        vars:
+            all:
+                header: setono_sylius_climate_partner.ui.channel_climate_fee_header
+                subheader: setono_sylius_climate_partner.ui.channel_climate_fee_subheader
+                templates:
+                    form: "@SetonoSyliusClimatePartnerPlugin/admin/channel_climate_fee/_form.html.twig"
+    type: sylius.resource

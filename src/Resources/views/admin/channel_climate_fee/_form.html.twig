@@ -1,0 +1,42 @@
+{# @var resource \Setono\SyliusClimatePartnerPlugin\Model\ChannelClimateFeeInterface #}
+{{ form_errors(form) }}
+<div class="ui two column stackable grid">
+    <div class="column">
+        {{ form_row(form.channel) }}
+        {{ form_row(form.fee) }}
+    </div>
+    <div class="column">
+        Help text
+    </div>
+</div>
+<script>
+    // todo we need to fix this JS to work on creation of a channel climate fee
+    (function (d) {
+        const feeFields = {};
+        {% for channel, fee_prototype in form.vars.fee_prototypes %}
+        feeFields['{{ channel }}'] = '{{ form_row(fee_prototype)|e('js') }}';
+        {% endfor %}
+
+        if (d.readyState === 'loading') {
+            d.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+
+        function init() {
+            d.getElementById('{{ form.channel.vars.id }}').addEventListener('change', function(e) {
+                const channel = e.target.value;
+                if(channel in feeFields) {
+                    d.getElementById('{{ form.fee.vars.id }}').closest('.field').replaceWith(createElement(feeFields[channel]));
+                }
+            });
+        }
+
+        function createElement(str) {
+            const elm = document.createElement('div');
+            elm.innerHTML = str.trim();
+
+            return elm.firstChild;
+        }
+    })(document);
+</script>

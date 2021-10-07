@@ -1,0 +1,2 @@
+setono_sylius_climate_partner:
+    resource: "@SetonoSyliusClimatePartnerPlugin/Resources/config/routes.yaml"

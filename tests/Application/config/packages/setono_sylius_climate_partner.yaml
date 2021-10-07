@@ -1,0 +1,2 @@
+imports:
+    - { resource: "@SetonoSyliusClimatePartnerPlugin/Resources/config/app/config.yaml" }

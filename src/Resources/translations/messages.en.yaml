@@ -1,0 +1,16 @@
+setono_sylius_climate_partner:
+    form:
+        channel_climate_fee:
+            channel: Channel
+            channel_placeholder: Select a channel...
+            fee: Fee
+    menu:
+        admin:
+            main:
+                catalog:
+                    climate_partner: Climate Partner
+    ui:
+        channel_climate_fee_header: Channel climate fees
+        channel_climate_fee_subheader: Manage your climate fees on a per channel basis
+        channel_climate_fees: Channel climate fees
+        fee: Fee
