@@ -32,6 +32,26 @@ abstract class AbstractClimateOffsetActionTest extends TestCase
 
         $response = $action->__invoke($request);
         self::assertInstanceOf(RedirectResponse::class, $response);
+        self::assertSame('/en_US/cart/', $response->getTargetUrl());
+    }
+
+    /**
+     * @test
+     */
+    public function it_redirects_to_referrer(): void
+    {
+        $urlGenerator = $this->prophesize(UrlGeneratorInterface::class);
+        $urlGenerator->generate('sylius_shop_cart_summary')->willReturn('/en_US/cart/');
+
+        $climateOffsettingApplicator = $this->prophesize(ClimateOffsettingApplicatorInterface::class);
+        $climateOffsettingApplicator->applyClimateOffsetting($this->getExpectedClimateOffsettingValue())->shouldBeCalled();
+
+        $request = new Request([], [], [], [], [], ['HTTP_REFERER' => '/']);
+        $action = $this->getAction($urlGenerator->reveal(), $climateOffsettingApplicator->reveal());
+
+        $response = $action->__invoke($request);
+        self::assertInstanceOf(RedirectResponse::class, $response);
+        self::assertSame('/', $response->getTargetUrl());
     }
 
     abstract protected function getAction(
