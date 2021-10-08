@@ -9,6 +9,7 @@ use PHPUnit\Framework\TestCase;
 use Setono\SyliusClimatePartnerPlugin\DependencyInjection\Configuration;
 use Setono\SyliusClimatePartnerPlugin\Form\Type\ChannelClimateFeeType;
 use Setono\SyliusClimatePartnerPlugin\Model\ChannelClimateFee;
+use Setono\SyliusClimatePartnerPlugin\Repository\ChannelClimateFeeRepository;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
 use Sylius\Component\Resource\Factory\Factory;
@@ -39,6 +40,7 @@ final class ConfigurationTest extends TestCase
                         'factory' => Factory::class,
                         'form' => ChannelClimateFeeType::class,
                         'model' => ChannelClimateFee::class,
+                        'repository' => ChannelClimateFeeRepository::class,
                     ],
                 ],
             ],
