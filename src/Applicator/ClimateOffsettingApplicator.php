@@ -27,7 +27,7 @@ final class ClimateOffsettingApplicator implements ClimateOffsettingApplicatorIn
     }
 
     /**
-     * @param BaseOrderInterface|OrderInterface $order
+     * @param BaseOrderInterface|OrderInterface|null $order
      */
     public function applyClimateOffsetting(bool $value, BaseOrderInterface $order = null): void
     {
