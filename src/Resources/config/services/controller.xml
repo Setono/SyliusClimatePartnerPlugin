@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="setono_sylius_climate_partner.controller.action.climate_offset"
+                 class="Setono\SyliusClimatePartnerPlugin\Controller\Action\AbstractClimateOffsetAction"
+                 abstract="true">
+            <argument type="service" id="router"/>
+            <argument type="service" id="setono_sylius_climate_partner.applicator.climate_offsetting"/>
+        </service>
+
+        <service id="setono_sylius_climate_partner.controller.action.apply_climate_offset"
+                 class="Setono\SyliusClimatePartnerPlugin\Controller\Action\ApplyClimateOffsetAction"
+                 parent="setono_sylius_climate_partner.controller.action.climate_offset" public="true"/>
+
+        <service id="setono_sylius_climate_partner.controller.action.remove_climate_offset"
+                 class="Setono\SyliusClimatePartnerPlugin\Controller\Action\RemoveClimateOffsetAction"
+                 parent="setono_sylius_climate_partner.controller.action.climate_offset" public="true"/>
+    </services>
+</container>

@@ -1,0 +1,8 @@
+{# @var cart \Setono\SyliusClimatePartnerPlugin\Model\OrderInterface #}
+<div class="ui hidden divider"></div>
+
+{% if cart.climateOffsetting %}
+    <a class="ui icon labeled large button" href="{{ path('setono_sylius_climate_partner_remove_climate_offset') }}"><i class="heart icon"></i> {{ 'setono_sylius_climate_partner.ui.remove_climate_offset'|trans }}</a>
+{% else %}
+    <a class="ui icon labeled large button" href="{{ path('setono_sylius_climate_partner_apply_climate_offset') }}"><i class="heart icon"></i> {{ 'setono_sylius_climate_partner.ui.apply_climate_offset'|trans }}</a>
+{% endif %}

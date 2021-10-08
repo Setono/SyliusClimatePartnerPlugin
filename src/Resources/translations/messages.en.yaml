@@ -10,7 +10,11 @@ setono_sylius_climate_partner:
                 catalog:
                     climate_partner: Climate Partner
     ui:
+        apply_climate_offset: Apply climate offset
         channel_climate_fee_header: Channel climate fees
         channel_climate_fee_subheader: Manage your climate fees on a per channel basis
         channel_climate_fees: Channel climate fees
+        climate_offset: Climate offset
+        climate_offset_adjustment_label: Climate offset
         fee: Fee
+        remove_climate_offset: Remove climate offset

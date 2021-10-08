@@ -1,1 +1,7 @@
-# TODO Add your shop routes here
+setono_sylius_climate_partner_apply_climate_offset:
+    path: /climate-offset/apply
+    controller: setono_sylius_climate_partner.controller.action.apply_climate_offset
+    
+setono_sylius_climate_partner_remove_climate_offset:
+    path: /climate-offset/remove
+    controller: setono_sylius_climate_partner.controller.action.remove_climate_offset

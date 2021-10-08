@@ -1,2 +1,9 @@
 imports:
     - { resource: "@SetonoSyliusClimatePartnerPlugin/Resources/config/grids/setono_sylius_climate_partner_admin_channel_climate_fee.yaml" }
+
+sylius_ui:
+    events:
+        sylius.shop.cart.coupon:
+            blocks:
+                apply_climate_offset:
+                    template: "@SetonoSyliusClimatePartnerPlugin/shop/_apply_climate_offset.html.twig"

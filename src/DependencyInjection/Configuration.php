@@ -6,6 +6,7 @@ namespace Setono\SyliusClimatePartnerPlugin\DependencyInjection;
 
 use Setono\SyliusClimatePartnerPlugin\Form\Type\ChannelClimateFeeType;
 use Setono\SyliusClimatePartnerPlugin\Model\ChannelClimateFee;
+use Setono\SyliusClimatePartnerPlugin\Repository\ChannelClimateFeeRepository;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
 use Sylius\Component\Resource\Factory\Factory;
@@ -58,7 +59,7 @@ final class Configuration implements ConfigurationInterface
                                         ->scalarNode('factory')->defaultValue(Factory::class)->end()
                                         ->scalarNode('form')->defaultValue(ChannelClimateFeeType::class)->end()
                                         ->scalarNode('model')->defaultValue(ChannelClimateFee::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('repository')->cannotBeEmpty()->end()
+                                        ->scalarNode('repository')->defaultValue(ChannelClimateFeeRepository::class)->cannotBeEmpty()->end()
                                     ->end()
                                 ->end()
                             ->end()
