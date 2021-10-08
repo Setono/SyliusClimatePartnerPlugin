@@ -44,4 +44,36 @@ final class ClimateOffsettingApplicatorTest extends TestCase
         $applicator->applyClimateOffsetting(true, $order);
         self::assertTrue($order->isClimateOffsetting());
     }
+
+    /**
+     * @test
+     */
+    public function it_uses_cart_context_if_no_order_is_given(): void
+    {
+        $order = new Order();
+
+        $cartContext = new class($order) implements CartContextInterface {
+            private Order $order;
+
+            public function __construct(Order $order)
+            {
+                $this->order = $order;
+            }
+
+            public function getCart(): OrderInterface
+            {
+                return $this->order;
+            }
+        };
+
+        $orderProcessor = $this->prophesize(OrderProcessorInterface::class);
+        $orderProcessor->process($order)->shouldBeCalled();
+
+        $orderManager = $this->prophesize(ObjectManager::class);
+        $orderManager->flush()->shouldBeCalled();
+
+        $applicator = new ClimateOffsettingApplicator($cartContext, $orderProcessor->reveal(), $orderManager->reveal());
+        $applicator->applyClimateOffsetting(true);
+        self::assertTrue($order->isClimateOffsetting());
+    }
 }
