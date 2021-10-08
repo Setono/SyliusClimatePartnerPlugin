@@ -34,10 +34,22 @@ final class ChannelClimateFeeType extends AbstractResourceType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('channel', ChannelChoiceType::class, [
-                'label' => 'setono_sylius_climate_partner.form.channel_climate_fee.channel',
-                'placeholder' => 'setono_sylius_climate_partner.form.channel_climate_fee.channel_placeholder',
-            ])->addEventListener(FormEvents::PRE_SET_DATA, static function (FormEvent $event): void {
+            ->addEventListener(FormEvents::PRE_SET_DATA, static function (FormEvent $event): void {
+                /** @var ChannelClimateFeeInterface|mixed $data */
+                $data = $event->getData();
+                Assert::isInstanceOf($data, ChannelClimateFeeInterface::class);
+
+                $formOptions = [
+                    'label' => 'setono_sylius_climate_partner.form.channel_climate_fee.channel',
+                ];
+
+                // if we are creating a new channel climate fee, show the placeholder, else don't
+                if ($data->getId() === null) {
+                    $formOptions['placeholder'] = 'setono_sylius_climate_partner.form.channel_climate_fee.channel_placeholder';
+                }
+
+                $event->getForm()->add('channel', ChannelChoiceType::class, $formOptions);
+            })->addEventListener(FormEvents::PRE_SET_DATA, static function (FormEvent $event): void {
                 /** @var ChannelClimateFeeInterface|mixed $data */
                 $data = $event->getData();
                 Assert::isInstanceOf($data, ChannelClimateFeeInterface::class);

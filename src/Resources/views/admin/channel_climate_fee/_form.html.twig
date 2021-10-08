@@ -26,6 +26,7 @@
         function init() {
             d.getElementById('{{ form.channel.vars.id }}').addEventListener('change', function(e) {
                 const channel = e.target.value;
+
                 if(channel in feeFields) {
                     d.getElementById('{{ form.fee.vars.id }}').closest('.field').replaceWith(createElement(feeFields[channel]));
                 }
