@@ -10,6 +10,7 @@ use Setono\SyliusClimatePartnerPlugin\Controller\Action\RemoveClimateOffsetActio
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
+ * @covers \Setono\SyliusClimatePartnerPlugin\Controller\Action\AbstractClimateOffsetAction
  * @covers \Setono\SyliusClimatePartnerPlugin\Controller\Action\RemoveClimateOffsetAction
  */
 final class RemoveClimateOffsetActionTest extends AbstractClimateOffsetActionTest

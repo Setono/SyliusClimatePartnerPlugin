@@ -10,6 +10,7 @@ use Setono\SyliusClimatePartnerPlugin\Controller\Action\ApplyClimateOffsetAction
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
+ * @covers \Setono\SyliusClimatePartnerPlugin\Controller\Action\AbstractClimateOffsetAction
  * @covers \Setono\SyliusClimatePartnerPlugin\Controller\Action\ApplyClimateOffsetAction
  */
 final class ApplyClimateOffsetActionTest extends AbstractClimateOffsetActionTest
