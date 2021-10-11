@@ -16,5 +16,6 @@ setono_sylius_climate_partner:
         channel_climate_fees: Channel climate fees
         climate_offset: Climate offset
         climate_offset_adjustment_label: Climate offset
+        climate_partner: Climate Partner
         fee: Fee
         remove_climate_offset: Remove climate offset

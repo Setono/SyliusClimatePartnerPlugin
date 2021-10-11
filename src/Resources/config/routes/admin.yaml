@@ -12,4 +12,13 @@ setono_sylius_climate_partner_admin_channel_climate_fee:
                 subheader: setono_sylius_climate_partner.ui.channel_climate_fee_subheader
                 templates:
                     form: "@SetonoSyliusClimatePartnerPlugin/admin/channel_climate_fee/_form.html.twig"
+            create:
+                templates:
+                    breadcrumb: '@SetonoSyliusClimatePartnerPlugin/admin/channel_climate_fee/create/_breadcrumb.html.twig'
+            index:
+                templates:
+                    breadcrumb: '@SetonoSyliusClimatePartnerPlugin/admin/channel_climate_fee/index/_breadcrumb.html.twig'
+            update:
+                templates:
+                    breadcrumb: '@SetonoSyliusClimatePartnerPlugin/admin/channel_climate_fee/update/_breadcrumb.html.twig'
     type: sylius.resource

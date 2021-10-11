@@ -1,0 +1,10 @@
+{% import '@SyliusAdmin/Macro/breadcrumb.html.twig' as breadcrumb %}
+
+{% set breadcrumbs = [
+    { label: 'sylius.ui.administration'|trans, url: path('sylius_admin_dashboard') },
+    { label: 'setono_sylius_climate_partner.ui.climate_partner'|trans },
+    { label: (metadata.applicationName~'.ui.'~metadata.pluralName)|trans }
+]
+%}
+
+{{ breadcrumb.crumble(breadcrumbs) }}
