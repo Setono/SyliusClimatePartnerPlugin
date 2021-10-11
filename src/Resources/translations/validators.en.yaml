@@ -1,0 +1,8 @@
+setono_sylius_climate_partner:
+    channel_climate_fee:
+        channel:
+            not_blank: Please select a channel
+        fee:
+            greater_than: The fee must be greater than 0
+            not_blank: The fee cannot be empty
+        unique_channel: You can only have a single fee per channel

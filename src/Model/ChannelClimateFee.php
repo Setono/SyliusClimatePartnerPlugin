@@ -24,7 +24,7 @@ class ChannelClimateFee implements ChannelClimateFeeInterface
         return $this->fee;
     }
 
-    public function setFee(int $fee): void
+    public function setFee(?int $fee): void
     {
         $this->fee = $fee;
     }

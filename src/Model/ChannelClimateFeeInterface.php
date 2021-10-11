@@ -13,5 +13,5 @@ interface ChannelClimateFeeInterface extends ResourceInterface, ChannelAwareInte
 
     public function getFee(): ?int;
 
-    public function setFee(int $fee): void;
+    public function setFee(?int $fee): void;
 }
