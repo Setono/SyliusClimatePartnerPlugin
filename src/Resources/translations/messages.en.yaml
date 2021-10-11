@@ -4,6 +4,7 @@ setono_sylius_climate_partner:
             channel: Channel
             channel_placeholder: Select a channel...
             fee: Fee
+            help: When you create a channel climate fee, customers are given the option to add a climate offset during checkout. Taxation wise, the climate fee is handled the same way as a shipping method.
     menu:
         admin:
             main:
