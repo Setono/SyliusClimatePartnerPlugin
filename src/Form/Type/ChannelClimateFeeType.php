@@ -57,6 +57,8 @@ final class ChannelClimateFeeType extends AbstractResourceType
                 $formOptions = [
                     'label' => 'setono_sylius_climate_partner.form.channel_climate_fee.fee',
                 ];
+
+                // if we are updating the entity, we can get the currency from the channel
                 if ($data->getId() !== null) {
                     /** @var ChannelInterface|null $channel */
                     $channel = $data->getChannel();
