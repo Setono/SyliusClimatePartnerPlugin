@@ -16,7 +16,7 @@ interface OrderInterface extends BaseOrderInterface
     /**
      * Set whether this order should be climate offset or not
      */
-    public function setClimateOffsetting(bool $climateOffset): void;
+    public function setClimateOffsetting(bool $climateOffsetting): void;
 
     /**
      * Returns the total climate offset amount for this order
