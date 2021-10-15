@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Setono\SyliusClimatePartnerPlugin\Controller\Action;
+namespace Tests\Setono\SyliusClimatePartnerPlugin\Unit\Controller\Action;
 
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;

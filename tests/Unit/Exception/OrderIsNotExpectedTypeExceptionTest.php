@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Setono\SyliusClimatePartnerPlugin\Exception;
+namespace Tests\Setono\SyliusClimatePartnerPlugin\Unit\Exception;
 
 use PHPUnit\Framework\TestCase;
 use Setono\SyliusClimatePartnerPlugin\Exception\OrderIsNotExpectedTypeException;

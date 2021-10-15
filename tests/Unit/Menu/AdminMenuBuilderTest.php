@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Setono\SyliusClimatePartnerPlugin\Menu;
+namespace Tests\Setono\SyliusClimatePartnerPlugin\Unit\Menu;
 
 use Knp\Menu\MenuFactory;
 use PHPUnit\Framework\TestCase;

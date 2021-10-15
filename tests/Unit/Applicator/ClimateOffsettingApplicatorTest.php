@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Setono\SyliusClimatePartnerPlugin\Applicator;
+namespace Tests\Setono\SyliusClimatePartnerPlugin\Unit\Applicator;
 
 use Doctrine\Persistence\ObjectManager;
 use PHPUnit\Framework\TestCase;

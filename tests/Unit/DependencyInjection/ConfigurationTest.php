@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Setono\SyliusClimatePartnerPlugin\DependencyInjection;
+namespace Tests\Setono\SyliusClimatePartnerPlugin\Unit\DependencyInjection;
 
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
 use PHPUnit\Framework\TestCase;

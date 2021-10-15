@@ -8,7 +8,7 @@ use Setono\SyliusClimatePartnerPlugin\Api\Command\RemoveClimateOffset;
 use Setono\SyliusClimatePartnerPlugin\Applicator\ClimateOffsettingApplicatorInterface;
 use Setono\SyliusClimatePartnerPlugin\Model\OrderInterface;
 use function sprintf;
-use Sylius\Component\Order\Repository\OrderRepositoryInterface;
+use Sylius\Component\Core\Repository\OrderRepositoryInterface;
 use Symfony\Component\Messenger\Exception\UnrecoverableMessageHandlingException;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Setono\SyliusClimatePartnerPlugin\Form\Type;
+namespace Tests\Setono\SyliusClimatePartnerPlugin\Unit\Form\Type;
 
 use Prophecy\PhpUnit\ProphecyTrait;
 use Setono\SyliusClimatePartnerPlugin\Form\Type\ChannelClimateFeeType;

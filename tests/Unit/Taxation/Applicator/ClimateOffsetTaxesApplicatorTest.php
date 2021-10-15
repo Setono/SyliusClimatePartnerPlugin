@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Setono\SyliusClimatePartnerPlugin\Taxation\Applicator;
+namespace Tests\Setono\SyliusClimatePartnerPlugin\Unit\Taxation\Applicator;
 
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;

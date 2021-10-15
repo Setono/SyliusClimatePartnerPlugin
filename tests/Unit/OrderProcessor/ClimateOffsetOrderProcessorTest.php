@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Setono\SyliusClimatePartnerPlugin\OrderProcessor;
+namespace Tests\Setono\SyliusClimatePartnerPlugin\Unit\OrderProcessor;
 
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;

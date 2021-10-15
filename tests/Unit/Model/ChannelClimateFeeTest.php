@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Setono\SyliusClimatePartnerPlugin\Model;
+namespace Tests\Setono\SyliusClimatePartnerPlugin\Unit\Model;
 
 use PHPUnit\Framework\TestCase;
 use Setono\SyliusClimatePartnerPlugin\Model\ChannelClimateFee;
