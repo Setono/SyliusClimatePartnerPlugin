@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Setono\SyliusClimatePartnerPlugin\Api\Handler;
 
-use Setono\SyliusClimatePartnerPlugin\Api\Command\ApplyClimateOffset;
+use Setono\SyliusClimatePartnerPlugin\Api\Command\RemoveClimateOffset;
 use Setono\SyliusClimatePartnerPlugin\Applicator\ClimateOffsettingApplicatorInterface;
 use Setono\SyliusClimatePartnerPlugin\Model\OrderInterface;
 use function sprintf;
-use Sylius\Component\Core\Repository\OrderRepositoryInterface;
+use Sylius\Component\Order\Repository\OrderRepositoryInterface;
 use Symfony\Component\Messenger\Exception\UnrecoverableMessageHandlingException;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
-final class ApplyClimateOffsetHandler implements MessageHandlerInterface
+final class RemoveClimateOffsetHandler implements MessageHandlerInterface
 {
     private ClimateOffsettingApplicatorInterface $climateOffsettingApplicator;
 
@@ -26,7 +26,7 @@ final class ApplyClimateOffsetHandler implements MessageHandlerInterface
         $this->orderRepository = $orderRepository;
     }
 
-    public function __invoke(ApplyClimateOffset $message): OrderInterface
+    public function __invoke(RemoveClimateOffset $message): OrderInterface
     {
         $orderTokenValue = $message->getOrderTokenValue();
         if (null === $orderTokenValue) {
@@ -43,7 +43,7 @@ final class ApplyClimateOffsetHandler implements MessageHandlerInterface
             throw new UnrecoverableMessageHandlingException(sprintf('Order with token %s does not exist', $orderTokenValue));
         }
 
-        $this->climateOffsettingApplicator->applyClimateOffsetting(true, $order);
+        $this->climateOffsettingApplicator->applyClimateOffsetting(false, $order);
 
         return $order;
     }

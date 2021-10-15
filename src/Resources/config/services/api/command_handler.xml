@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="setono_sylius_climate_partner.api.command_handler.apply_climate_offset"
+                 class="Setono\SyliusClimatePartnerPlugin\Api\Handler\ApplyClimateOffsetHandler">
+            <argument type="service" id="setono_sylius_climate_partner.applicator.climate_offsetting" />
+            <argument type="service" id="sylius.repository.order" />
+
+            <tag name="messenger.message_handler" bus="sylius.command_bus" />
+            <tag name="messenger.message_handler" bus="sylius_default.bus" />
+        </service>
+
+        <service id="setono_sylius_climate_partner.api.command_handler.remove_climate_offset"
+                 class="Setono\SyliusClimatePartnerPlugin\Api\Handler\RemoveClimateOffsetHandler">
+            <argument type="service" id="setono_sylius_climate_partner.applicator.climate_offsetting" />
+            <argument type="service" id="sylius.repository.order" />
+
+            <tag name="messenger.message_handler" bus="sylius.command_bus" />
+            <tag name="messenger.message_handler" bus="sylius_default.bus" />
+        </service>
+    </services>
+</container>
