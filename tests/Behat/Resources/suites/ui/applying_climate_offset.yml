@@ -1,0 +1,21 @@
+default:
+    suites:
+        ui_applying_climate_offset:
+            contexts:
+                - sylius.behat.context.hook.doctrine_orm
+
+                - sylius.behat.context.transform.lexical
+                - sylius.behat.context.transform.product
+                - sylius.behat.context.transform.shared_storage
+
+                - sylius.behat.context.setup.channel
+                - sylius.behat.context.setup.product
+                - sylius.behat.context.setup.shop_security
+                    
+                - setono_sylius_climate_partner.behat.context.setup.channel_climate_fee
+
+                - sylius.behat.context.ui.shop.cart
+
+                - setono_sylius_climate_partner.behat.context.ui.shop.cart
+            filters:
+                tags: "@applying_climate_offset && @ui"
