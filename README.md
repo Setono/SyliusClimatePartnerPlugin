@@ -12,7 +12,51 @@ https://user-images.githubusercontent.com/2412177/146182689-d0d5e44f-f159-45e9-a
 
 ## Installation
 
-TODO
+## Installation
+
+```bash
+composer require setono/sylius-climate-partner-plugin
+```
+
+### Import configuration
+
+```yaml
+# config/packages/setono_sylius_climate_partner.yaml
+imports:
+    # ...
+    - { resource: "@SetonoSyliusClimatePartnerPlugin/Resources/config/app/config.yaml" }
+```
+
+### Import routing
+
+```yaml
+# config/routes.yaml
+setono_sylius_climate_partner:
+    resource: "@SetonoSyliusClimatePartnerPlugin/Resources/config/routes.yaml"
+```
+
+or if your app doesn't use locales:
+
+```yaml
+# config/routes.yaml
+setono_sylius_climate_partner:
+    resource: "@SetonoSyliusClimatePartnerPlugin/Resources/config/routes_no_locale.yaml"
+```
+
+### Add plugin class to your `bundles.php`
+
+Make sure you add it before `SyliusGridBundle`, otherwise you'll get
+`You have requested a non-existent parameter "setono_sylius_climate_partner.model.channel_climate_fee.class".` exception.
+
+```php
+<?php
+$bundles = [
+    // ...
+    Setono\SyliusClimatePartnerPlugin\SetonoSyliusClimatePartnerPlugin::class => ['all' => true],
+    Sylius\Bundle\GridBundle\SyliusGridBundle::class => ['all' => true],
+    // ...
+];
+```
 
 ### Copy Api Resources
 
@@ -49,10 +93,6 @@ If you already have them overridden, just change the following routes:
     </attribute>
 </itemOperation>
 ```
-
-## Usage
-
-TODO
 
 [ico-version]: https://poser.pugx.org/setono/sylius-climate-partner-plugin/v/stable
 [ico-unstable-version]: https://poser.pugx.org/setono/sylius-climate-partner-plugin/v/unstable
