@@ -43,3 +43,40 @@ To be able to setup a plugin's database, remember to configure you database cred
 [link-packagist]: https://packagist.org/packages/setono/sylius-climate-partner-plugin
 [link-github-actions]: https://github.com/Setono/SyliusClimatePartnerPlugin/actions
 [link-code-coverage]: https://codecov.io/gh/Setono/SyliusClimatePartnerPlugin
+
+
+### Copy Api Resources
+
+Resources declaration that need to be copied are:
+* [Order.xml](src/Resources/config/api_resources/Order.xml)
+
+If you already have them overridden, just change the following routes:
+
+**[Order.xml](src/Resources/config/api_resources/Order.xml)**
+```xml
+<itemOperation name="shop_apply_climate_offset">
+    <attribute name="method">PATCH</attribute>
+    <attribute name="path">/shop/orders/{tokenValue}/apply-climate-offset</attribute>
+    <attribute name="messenger">input</attribute>
+    <attribute name="input">Setono\SyliusClimatePartnerPlugin\Api\Command\ApplyClimateOffset</attribute>
+    <attribute name="openapi_context">
+        <attribute name="summary">Apply climate offset to cart</attribute>
+    </attribute>
+    <attribute name="denormalization_context">
+        <attribute name="groups">shop:climate-offset:apply</attribute>
+    </attribute>
+</itemOperation>
+
+<itemOperation name="shop_remove_climate_offset">
+    <attribute name="method">PATCH</attribute>
+    <attribute name="path">/shop/orders/{tokenValue}/remove-climate-offset</attribute>
+    <attribute name="messenger">input</attribute>
+    <attribute name="input">Setono\SyliusClimatePartnerPlugin\Api\Command\RemoveClimateOffset</attribute>
+    <attribute name="openapi_context">
+        <attribute name="summary">Remove climate offset to cart</attribute>
+    </attribute>
+    <attribute name="denormalization_context">
+        <attribute name="groups">shop:climate-offset:apply</attribute>
+    </attribute>
+</itemOperation>
+```

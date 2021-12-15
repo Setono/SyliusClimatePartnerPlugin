@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <defaults public="true"/>
+
+        <service id="setono_sylius_climate_partner.behat.context.setup.cart"
+                 class="Tests\Setono\SyliusClimatePartnerPlugin\Behat\Context\Setup\CartContext">
+            <argument type="service" id="sylius.behat.shared_storage"/>
+            <argument type="service" id="sylius.command_bus"/>
+            <argument type="service" id="sylius.random_generator"/>
+        </service>
+
+        <service id="setono_sylius_climate_partner.behat.context.setup.channel_climate_fee"
+                 class="Tests\Setono\SyliusClimatePartnerPlugin\Behat\Context\Setup\ChannelClimateFeeContext">
+            <argument type="service" id="sylius.behat.shared_storage"/>
+            <argument type="service" id="setono_sylius_climate_partner.factory.channel_climate_fee"/>
+            <argument type="service" id="setono_sylius_climate_partner.repository.channel_climate_fee"/>
+        </service>
+    </services>
+</container>
