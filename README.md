@@ -12,8 +12,6 @@ https://user-images.githubusercontent.com/2412177/146182689-d0d5e44f-f159-45e9-a
 
 ## Installation
 
-## Installation
-
 ```bash
 composer require setono/sylius-climate-partner-plugin
 ```
