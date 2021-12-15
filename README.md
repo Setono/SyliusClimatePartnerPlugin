@@ -6,11 +6,15 @@
 [![Build Status][ico-github-actions]][link-github-actions]
 [![Code Coverage][ico-code-coverage]][link-code-coverage]
 
+https://user-images.githubusercontent.com/2412177/146182689-d0d5e44f-f159-45e9-aecf-0578105546b3.mp4
+
 [Setono](https://setono.com) have made a bunch of [plugins for Sylius](https://github.com/Setono), and we have some guidelines
 which we try to follow when developing plugins. These guidelines are used in this repository, and it gives you a very
 solid base when developing plugins.
 
 Enjoy! 
+
+
 
 ## Quickstart
 
