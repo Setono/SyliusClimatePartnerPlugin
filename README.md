@@ -28,7 +28,7 @@ imports:
 ### Import routing
 
 ```yaml
-# config/routes.yaml
+# config/routes/setono_sylius_climate_partner.yaml
 setono_sylius_climate_partner:
     resource: "@SetonoSyliusClimatePartnerPlugin/Resources/config/routes.yaml"
 ```
@@ -36,7 +36,7 @@ setono_sylius_climate_partner:
 or if your app doesn't use locales:
 
 ```yaml
-# config/routes.yaml
+# config/routes/setono_sylius_climate_partner.yaml
 setono_sylius_climate_partner:
     resource: "@SetonoSyliusClimatePartnerPlugin/Resources/config/routes_no_locale.yaml"
 ```
