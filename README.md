@@ -58,12 +58,16 @@ $bundles = [
 ];
 ```
 
-### Copy Api Resources
+### Copy API resources
+
+In order to add ClimatePartner API endpoints to Sylius Order section, the API Resource declaration has to be overridden.
+If you've not overridden those configuration yet, you can simply copy the whole files into your local `config/api_resources` folder.
+If you've overridden them already, then you can just merge your config with the endpoints we added.
 
 Resources declaration that need to be copied are:
 * [Order.xml](src/Resources/config/api_resources/Order.xml)
 
-If you already have them overridden, just change the following routes:
+If you already have them overridden, just add the following item operations:
 
 **[Order.xml](src/Resources/config/api_resources/Order.xml)**
 ```xml
