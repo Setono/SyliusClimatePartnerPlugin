@@ -48,6 +48,8 @@ Make sure you add it before `SyliusGridBundle`, otherwise you'll get
 
 ```php
 <?php
+// config/bundles.php
+
 $bundles = [
     // ...
     Setono\SyliusClimatePartnerPlugin\SetonoSyliusClimatePartnerPlugin::class => ['all' => true],
