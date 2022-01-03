@@ -5,6 +5,14 @@
     <services>
         <defaults public="true"/>
 
+        <!-- Admin -->
+        <service id="setono_sylius_climate_partner.behat.context.api.admin.managing_channel_climate_fees"
+                 class="Tests\Setono\SyliusClimatePartnerPlugin\Behat\Context\Api\Admin\ChannelClimateFeesContext">
+            <argument type="service" id="setono_sylius_climate_partner.behat.api_platform_client.admin.channel_climate_fees" />
+            <argument type="service" id="Sylius\Behat\Client\ResponseCheckerInterface" />
+            <argument type="service" id="api_platform.iri_converter" />
+        </service>
+
         <!-- Shop -->
         <service id="setono_sylius_climate_partner.behat.context.api.shop.cart"
                  class="Tests\Setono\SyliusClimatePartnerPlugin\Behat\Context\Api\Shop\CartContext">
