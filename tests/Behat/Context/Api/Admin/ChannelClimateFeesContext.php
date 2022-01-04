@@ -65,7 +65,7 @@ final class ChannelClimateFeesContext implements Context
     /**
      * @When /^I set fees to ("[^"]+")$/
      */
-    public function iSetFees(float $fees): void
+    public function iSetFees(int $fees): void
     {
         $this->client->addRequestData('fee', $fees);
     }

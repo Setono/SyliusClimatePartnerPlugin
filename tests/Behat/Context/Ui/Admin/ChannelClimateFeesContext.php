@@ -96,11 +96,16 @@ final class ChannelClimateFeesContext implements Context
     /**
      * @When /^I delete (it)$/
      */
-    public function iDeletedIt(ChannelClimateFeeInterface $channelClimateFee)
+    public function iDeleteIt(ChannelClimateFeeInterface $channelClimateFee): void
     {
+        $channel = $channelClimateFee->getChannel();
+        if (null === $channel) {
+            throw new \LogicException('A channel was expected');
+        }
+
         $this->indexPage->open();
         $this->indexPage->deleteResourceOnPage([
-            'channel' => $channelClimateFee->getChannel()->getName(),
+            'channel' => $channel->getName(),
             'fee' => $channelClimateFee->getFee(),
         ]);
     }

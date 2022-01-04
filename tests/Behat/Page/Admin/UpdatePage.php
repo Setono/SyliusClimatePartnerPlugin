@@ -10,12 +10,13 @@ class UpdatePage extends CrudUpdatePage implements UpdatePageInterface
 {
     public function specifyFees(int $fees): void
     {
-        $this->getDocument()->fillField('Fee', $fees);
+        $this->getDocument()->fillField('Fee', (string) $fees);
     }
 
     public function getFees(): string
     {
-        return $this->getElement('fee')->getValue();
+        /** @psalm-suppress PossiblyInvalidCast */
+        return (string) $this->getElement('fee')->getValue();
     }
 
     protected function getDefinedElements(): array

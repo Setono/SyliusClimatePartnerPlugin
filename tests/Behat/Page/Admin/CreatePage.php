@@ -15,7 +15,7 @@ class CreatePage extends CrudCreatePage implements CreatePageInterface
 
     public function specifyFees(int $fees): void
     {
-        $this->getDocument()->fillField('Fee', $fees);
+        $this->getDocument()->fillField('Fee', (string) $fees);
     }
 
     protected function getDefinedElements(): array
