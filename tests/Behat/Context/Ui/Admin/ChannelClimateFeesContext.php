@@ -94,6 +94,18 @@ final class ChannelClimateFeesContext implements Context
     }
 
     /**
+     * @When /^I delete (it)$/
+     */
+    public function iDeletedIt(ChannelClimateFeeInterface $channelClimateFee)
+    {
+        $this->indexPage->open();
+        $this->indexPage->deleteResourceOnPage([
+            'channel' => $channelClimateFee->getChannel()->getName(),
+            'fee' => $channelClimateFee->getFee(),
+        ]);
+    }
+
+    /**
      * @Then /^(it) should be worth ("[^"]+")$/
      */
     public function theChannelClimateFeeShouldWorth(ChannelClimateFeeInterface $channelClimateFee, int $fee): void

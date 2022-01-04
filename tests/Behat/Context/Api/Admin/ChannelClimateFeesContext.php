@@ -87,6 +87,14 @@ final class ChannelClimateFeesContext implements Context
     }
 
     /**
+     * @When /^I delete (it)$/
+     */
+    public function iDeleteIt(ChannelClimateFeeInterface $channelClimateFee): void
+    {
+        $this->client->delete((string) $channelClimateFee->getId());
+    }
+
+    /**
      * @Then I should be notified that it has been successfully created
      */
     public function iShouldBeNotifiedThatItHasBeenSuccessfullyCreated(): void
@@ -105,6 +113,17 @@ final class ChannelClimateFeesContext implements Context
         Assert::true(
             $this->responseChecker->isUpdateSuccessful($this->client->getLastResponse()),
             'Channel climate fee could not be updated'
+        );
+    }
+
+    /**
+     * @Then I should be notified that it has been successfully deleted
+     */
+    public function iShouldBeNotifiedThatItHasBeenSuccessfullyDeleted(): void
+    {
+        Assert::true(
+            $this->responseChecker->isDeletionSuccessful($this->client->getLastResponse()),
+            'Channel climate fee could not be deleted'
         );
     }
 
