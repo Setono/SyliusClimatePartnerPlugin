@@ -12,7 +12,7 @@ Feature: Adding channel climate fees
   Scenario: Adding channel climate fees
     Given I want to add a new channel climate fees
     When I select channel "United States"
-    And I set fees to "0.50"
+    And I set fees to "$0.50"
     And I add it
     Then I should be notified that it has been successfully created
     And I should see 1 channel climate fees in the list

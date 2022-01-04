@@ -6,6 +6,7 @@ namespace Tests\Setono\SyliusClimatePartnerPlugin\Behat\Context\Api\Admin;
 
 use ApiPlatform\Core\Api\IriConverterInterface;
 use Behat\Behat\Context\Context;
+use Setono\SyliusClimatePartnerPlugin\Model\ChannelClimateFeeInterface;
 use Sylius\Behat\Client\ApiClientInterface;
 use Sylius\Behat\Client\ResponseCheckerInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
@@ -46,6 +47,14 @@ final class ChannelClimateFeesContext implements Context
     }
 
     /**
+     * @Given /^I want to update (this channel climate fee)$/
+     */
+    public function iWantToUpdateThisChannelClimateFee(ChannelClimateFeeInterface $channelClimateFee): void
+    {
+        $this->client->buildUpdateRequest((string) $channelClimateFee->getId());
+    }
+
+    /**
      * @When /^I select (channel "([^"]+)")$/
      */
     public function iChooseChannel(ChannelInterface $channel): void
@@ -54,11 +63,11 @@ final class ChannelClimateFeesContext implements Context
     }
 
     /**
-     * @When I set fees to :fees
+     * @When /^I set fees to ("[^"]+")$/
      */
-    public function iSetFees(string $fees): void
+    public function iSetFees(float $fees): void
     {
-        $this->client->addRequestData('fee', (int) $fees);
+        $this->client->addRequestData('fee', $fees);
     }
 
     /**
@@ -67,6 +76,14 @@ final class ChannelClimateFeesContext implements Context
     public function iAddIt(): void
     {
         $this->client->create();
+    }
+
+    /**
+     * @When I update it
+     */
+    public function iUpdateIt(): void
+    {
+        $this->client->update();
     }
 
     /**
@@ -81,11 +98,31 @@ final class ChannelClimateFeesContext implements Context
     }
 
     /**
+     * @Then I should be notified that it has been successfully edited
+     */
+    public function iShouldBeNotifiedThatItHasBeenSuccessfullyUpdated(): void
+    {
+        Assert::true(
+            $this->responseChecker->isUpdateSuccessful($this->client->getLastResponse()),
+            'Channel climate fee could not be updated'
+        );
+    }
+
+    /**
      * @Then I should see :amount channel climate fees in the list
      */
     public function thereShouldBeXChannelClimateFee(int $amount): void
     {
         $this->client->index();
-        Assert::eq(1, $this->responseChecker->countCollectionItems($this->client->getLastResponse()));
+        Assert::eq($amount, $this->responseChecker->countCollectionItems($this->client->getLastResponse()));
+    }
+
+    /**
+     * @Then /^(it) should be worth ("[^"]+")$/
+     */
+    public function theChannelClimateFeeShouldWorth(ChannelClimateFeeInterface $channelClimateFee, int $fee): void
+    {
+        $this->client->show((string) $channelClimateFee->getId());
+        Assert::same($fee, $this->responseChecker->getValue($this->client->getLastResponse(), 'fee'));
     }
 }

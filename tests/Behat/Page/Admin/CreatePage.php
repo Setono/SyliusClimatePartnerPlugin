@@ -13,7 +13,7 @@ class CreatePage extends CrudCreatePage implements CreatePageInterface
         $this->getElement('channel')->selectOption($channelCode);
     }
 
-    public function specifyFees(string $fees): void
+    public function specifyFees(int $fees): void
     {
         $this->getDocument()->fillField('Fee', $fees);
     }

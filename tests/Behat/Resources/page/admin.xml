@@ -14,5 +14,11 @@
                  parent="sylius.behat.page.admin.crud.create" public="false">
             <argument type="string">setono_sylius_climate_partner_admin_channel_climate_fee_create</argument>
         </service>
+
+        <service id="setono_sylius_climate_partner.behat.page.admin.channel_climate_fees.update"
+                 class="Tests\Setono\SyliusClimatePartnerPlugin\Behat\Page\Admin\UpdatePage"
+                 parent="sylius.behat.page.admin.crud.update" public="false">
+            <argument type="string">setono_sylius_climate_partner_admin_channel_climate_fee_update</argument>
+        </service>
     </services>
 </container>

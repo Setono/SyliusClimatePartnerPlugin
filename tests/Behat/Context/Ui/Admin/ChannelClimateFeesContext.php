@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace Tests\Setono\SyliusClimatePartnerPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
+use Setono\SyliusClimatePartnerPlugin\Model\ChannelClimateFeeInterface;
 use Tests\Setono\SyliusClimatePartnerPlugin\Behat\Page\Admin\CreatePageInterface;
 use Tests\Setono\SyliusClimatePartnerPlugin\Behat\Page\Admin\IndexPageInterface;
+use Tests\Setono\SyliusClimatePartnerPlugin\Behat\Page\Admin\UpdatePageInterface;
 use Webmozart\Assert\Assert;
 
 final class ChannelClimateFeesContext implements Context
@@ -15,10 +17,16 @@ final class ChannelClimateFeesContext implements Context
 
     private CreatePageInterface $createPage;
 
-    public function __construct(IndexPageInterface $indexPage, CreatePageInterface $createPage)
-    {
+    private UpdatePageInterface $updatePage;
+
+    public function __construct(
+        IndexPageInterface $indexPage,
+        CreatePageInterface $createPage,
+        UpdatePageInterface $updatePage
+    ) {
         $this->indexPage = $indexPage;
         $this->createPage = $createPage;
+        $this->updatePage = $updatePage;
     }
 
     /**
@@ -46,6 +54,14 @@ final class ChannelClimateFeesContext implements Context
     }
 
     /**
+     * @Given /^I want to update (this channel climate fee)$/
+     */
+    public function iWantToUpdateThisChannelClimateFee(ChannelClimateFeeInterface $channelClimateFee): void
+    {
+        $this->updatePage->open(['id' => $channelClimateFee->getId()]);
+    }
+
+    /**
      * @When I select channel :channelCode
      */
     public function iSelectChannel(string $channelCode): void
@@ -54,9 +70,9 @@ final class ChannelClimateFeesContext implements Context
     }
 
     /**
-     * @When I set fees to :fees
+     * @When /^I set fees to ("[^"]+")$/
      */
-    public function iSpecifyItsFees(string $fees): void
+    public function iSpecifyItsFees(int $fees): void
     {
         $this->createPage->specifyFees($fees);
     }
@@ -67,5 +83,22 @@ final class ChannelClimateFeesContext implements Context
     public function iAddIt(): void
     {
         $this->createPage->create();
+    }
+
+    /**
+     * @When I update it
+     */
+    public function iUpdateIt(): void
+    {
+        $this->updatePage->saveChanges();
+    }
+
+    /**
+     * @Then /^(it) should be worth ("[^"]+")$/
+     */
+    public function theChannelClimateFeeShouldWorth(ChannelClimateFeeInterface $channelClimateFee, int $fee): void
+    {
+        $this->updatePage->open(['id' => $channelClimateFee->getId()]);
+        Assert::same($fee, (int) $this->updatePage->getFees());
     }
 }

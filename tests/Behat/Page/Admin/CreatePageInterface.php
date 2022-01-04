@@ -10,5 +10,5 @@ interface CreatePageInterface extends CrudCreatePageInterface
 {
     public function chooseChannel(string $channelCode): void;
 
-    public function specifyFees(string $fees): void;
+    public function specifyFees(int $fees): void;
 }
