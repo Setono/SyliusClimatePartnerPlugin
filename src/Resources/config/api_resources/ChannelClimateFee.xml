@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+
+<resources xmlns="https://api-platform.com/schema/metadata"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="https://api-platform.com/schema/metadata https://api-platform.com/schema/metadata/metadata-2.0.xsd"
+>
+    <resource class="%setono_sylius_climate_partner.model.channel_climate_fee.class%" shortName="ChannelClimateFee">
+        <attribute name="normalization_context">
+            <attribute name="groups">
+                <attribute>setono_sylius_climate_partner_admin:channel_climate_fee:read</attribute>
+            </attribute>
+        </attribute>
+        <attribute name="route_prefix">admin/climate-partner</attribute>
+
+        <property name="id" identifier="true" writable="false" />
+        <property name="channel" />
+        <property name="fee" />
+    </resource>
+</resources>

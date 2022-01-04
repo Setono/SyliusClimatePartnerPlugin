@@ -43,5 +43,7 @@ final class ChannelClimateFeeContext implements Context
         $climateFee->setChannel($channel);
 
         $this->channelClimateFeeRepository->add($climateFee);
+
+        $this->sharedStorage->set('channel_climate_fee', $climateFee);
     }
 }

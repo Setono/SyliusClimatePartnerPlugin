@@ -5,6 +5,13 @@
     <services>
         <defaults public="true"/>
 
+        <service id="setono_sylius_climate_partner.behat.context.ui.admin.channel_climate_fees"
+                 class="Tests\Setono\SyliusClimatePartnerPlugin\Behat\Context\Ui\Admin\ChannelClimateFeesContext">
+            <argument type="service" id="setono_sylius_climate_partner.behat.page.admin.channel_climate_fees.index"/>
+            <argument type="service" id="setono_sylius_climate_partner.behat.page.admin.channel_climate_fees.create"/>
+            <argument type="service" id="setono_sylius_climate_partner.behat.page.admin.channel_climate_fees.update"/>
+        </service>
+
         <service id="setono_sylius_climate_partner.behat.context.ui.shop.cart"
                  class="Tests\Setono\SyliusClimatePartnerPlugin\Behat\Context\Ui\Shop\CartContext">
             <argument type="service" id="setono_sylius_climate_partner.behat.page.shop.cart.cart_summary"/>
