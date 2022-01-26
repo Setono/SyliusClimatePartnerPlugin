@@ -13,7 +13,7 @@
         <field name="fee" type="integer"/>
 
         <many-to-one field="channel" target-entity="Sylius\Component\Channel\Model\ChannelInterface">
-            <join-column name="channel_id" referenced-column-name="id" nullable="true" />
+            <join-column name="channel_id" referenced-column-name="id" nullable="true" on-delete="CASCADE"/>
         </many-to-one>
 
         <unique-constraints>
